@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.mayubao.kuaichuan.AppContext;
 import io.github.mayubao.kuaichuan.R;
@@ -33,9 +33,9 @@ import io.github.mayubao.kuaichuan.utils.AnimationUtils;
  */
 public class FileInfoFragment extends Fragment {
 
-    @Bind(R.id.gv)
+    @BindView(R.id.gv)
     GridView gv;
-    @Bind(R.id.pb)
+    @BindView(R.id.pb)
     ProgressBar pb;
 
     private int mType = FileInfo.TYPE_APK;

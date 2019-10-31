@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.github.mayubao.kuaichuan.AppContext;
@@ -44,29 +44,29 @@ public class FileSenderActivity extends BaseActivity {
     /**
      * Topbar相关UI
      */
-    @Bind(R.id.tv_back)
+    @BindView(R.id.tv_back)
     TextView tv_back;
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView tv_title;
 
     /**
      * 进度条 已传 耗时等UI组件
      */
-    @Bind(R.id.pb_total)
+    @BindView(R.id.pb_total)
     ProgressBar pb_total;
-    @Bind(R.id.tv_value_storage)
+    @BindView(R.id.tv_value_storage)
     TextView tv_value_storage;
-    @Bind(R.id.tv_unit_storage)
+    @BindView(R.id.tv_unit_storage)
     TextView tv_unit_storage;
-    @Bind(R.id.tv_value_time)
+    @BindView(R.id.tv_value_time)
     TextView tv_value_time;
-    @Bind(R.id.tv_unit_time)
+    @BindView(R.id.tv_unit_time)
     TextView tv_unit_time;
 
     /**
      * 其他UI
      */
-    @Bind(R.id.lv_result)
+    @BindView(R.id.lv_result)
     ListView lv_result;
 
     List<Map.Entry<String, FileInfo>> mFileInfoMapList;

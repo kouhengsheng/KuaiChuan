@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.Map;
 import java.util.Set;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.github.mayubao.kuaichuan.AppContext;
@@ -32,11 +32,11 @@ public class ShowSelectedFileInfoDialog {
     /**
      * UI控件
      */
-    @Bind(R.id.btn_operation)
+    @BindView(R.id.btn_operation)
     Button btn_operation;
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView tv_title;
-    @Bind(R.id.lv_result)
+    @BindView(R.id.lv_result)
     ListView lv_result;
 
     Context mContext;

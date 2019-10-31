@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ import io.github.mayubao.kuaichuan.AppContext;
 import io.github.mayubao.kuaichuan.R;
 import io.github.mayubao.kuaichuan.common.CommonAdapter;
 import io.github.mayubao.kuaichuan.core.entity.FileInfo;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 /**
  * ApkInfo Adapter
@@ -83,13 +86,14 @@ public class FileInfoAdapter extends CommonAdapter<FileInfo> {
             if(getDataList() != null && getDataList().get(position) != null){
 
 //                viewHolder.iv_shortcut.setImageBitmap(fileInfo.getBitmap());
-                Glide
-                    .with(getContext())
-                    .load(fileInfo.getFilePath())
-                    .centerCrop()
-                    .placeholder(R.mipmap.icon_jpg)
-                    .crossFade()
-                    .into(viewHolder.iv_shortcut);
+                RequestOptions options = new RequestOptions()
+                        .placeholder(R.mipmap.icon_jpg)
+                        .centerCrop();
+                Glide.with(getContext())
+                        .load(fileInfo.getFilePath())
+                        .apply(options)
+                        .transition(withCrossFade())
+                        .into(viewHolder.iv_shortcut);
 
                 //全局变量是否存在FileInfo
                 if(AppContext.getAppContext().isExist(fileInfo)){

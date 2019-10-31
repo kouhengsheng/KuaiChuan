@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.github.mayubao.kuaichuan.AppContext;
@@ -52,13 +52,13 @@ public class ChooseReceiverActivity extends BaseActivity {
     /**
      * Topbar相关UI
      */
-    @Bind(R.id.tv_back)
+    @BindView(R.id.tv_back)
     TextView tv_back;
 
     /**
      * 其他UI
      */
-    @Bind(R.id.radarView)
+    @BindView(R.id.radarView)
     RadarScanView radarScanView;
 //    @Bind(R.id.tab_layout)
 //    TabLayout tab_layout;
@@ -68,7 +68,7 @@ public class ChooseReceiverActivity extends BaseActivity {
     /**
      * 扫描结果
      */
-    @Bind(R.id.lv_result)
+    @BindView(R.id.lv_result)
     ListView lv_result;
 
     List<ScanResult> mScanResultList;

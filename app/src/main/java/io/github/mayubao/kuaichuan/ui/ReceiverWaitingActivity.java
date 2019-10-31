@@ -22,7 +22,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.github.mayubao.kuaichuan.AppContext;
@@ -54,17 +54,17 @@ public class ReceiverWaitingActivity extends BaseActivity {
     /**
      * Topbar相关UI
      */
-    @Bind(R.id.tv_back)
+    @BindView(R.id.tv_back)
     TextView tv_back;
 
     /**
      * 其他UI
      */
-    @Bind(R.id.radarLayout)
+    @BindView(R.id.radarLayout)
     RadarLayout radarLayout;
-    @Bind(R.id.tv_device_name)
+    @BindView(R.id.tv_device_name)
     TextView tv_device_name;
-    @Bind(R.id.tv_desc)
+    @BindView(R.id.tv_desc)
     TextView tv_desc;
 
     WifiAPBroadcastReceiver mWifiAPBroadcastReceiver;

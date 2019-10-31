@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.github.mayubao.kuaichuan.AppContext;
@@ -43,29 +43,29 @@ public class ChooseFileActivity extends BaseActivity {
     /**
      * Topbar相关UI
      */
-    @Bind(R.id.tv_back)
+    @BindView(R.id.tv_back)
     TextView tv_back;
-    @Bind(R.id.iv_search)
+    @BindView(R.id.iv_search)
     ImageView iv_search;
-    @Bind(R.id.search_view)
+    @BindView(R.id.search_view)
     SearchView search_view;
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView tv_title;
 
     /**
      * BottomBar相关UI
      */
-    @Bind(R.id.btn_selected)
+    @BindView(R.id.btn_selected)
     Button btn_selected;
-    @Bind(R.id.btn_next)
+    @BindView(R.id.btn_next)
     Button btn_next;
 
     /**
      * 其他UI
      */
-    @Bind(R.id.tab_layout)
+    @BindView(R.id.tab_layout)
     TabLayout tab_layout;
-    @Bind(R.id.view_pager)
+    @BindView(R.id.view_pager)
     ViewPager view_pager;
 
 

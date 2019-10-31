@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,9 +24,11 @@ import io.github.mayubao.kuaichuan.R;
 import io.github.mayubao.kuaichuan.core.entity.FileInfo;
 import io.github.mayubao.kuaichuan.core.utils.FileUtils;
 
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+
 /**
  * 文件发送列表 Adapter
- *
+ * <p>
  * Created by mayubao on 2016/11/28.
  * Contact me 345269374@qq.com
  */
@@ -76,20 +79,15 @@ public class FileInfoSeletedAdapter extends BaseAdapter {
     }
 
     /**
-    @Override
-    public int getCount() {
-        return mDataHashMap.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return mDataHashMap.get(mKeys[position]);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+     * @Override public int getCount() {
+     * return mDataHashMap.size();
+     * }
+     * @Override public Object getItem(int position) {
+     * return mDataHashMap.get(mKeys[position]);
+     * }
+     * @Override public long getItemId(int position) {
+     * return position;
+     * }
      */
 
     @Override
@@ -97,7 +95,7 @@ public class FileInfoSeletedAdapter extends BaseAdapter {
         final FileInfo fileInfo = (FileInfo) getItem(position);
 
         FileSenderHolder viewHolder = null;
-        if(convertView == null){
+        if (convertView == null) {
             convertView = View.inflate(mContext, R.layout.item_transfer, null);
             viewHolder = new FileSenderHolder();
             viewHolder.iv_shortcut = (ImageView) convertView.findViewById(R.id.iv_shortcut);
@@ -107,27 +105,29 @@ public class FileInfoSeletedAdapter extends BaseAdapter {
             viewHolder.btn_operation = (Button) convertView.findViewById(R.id.btn_operation);
             viewHolder.iv_tick = (ImageView) convertView.findViewById(R.id.iv_tick);
             convertView.setTag(viewHolder);
-        }else{
+        } else {
             viewHolder = (FileSenderHolder) convertView.getTag();
         }
 
-        if(fileInfo != null){
+        if (fileInfo != null) {
             //初始化
             viewHolder.pb_file.setVisibility(View.INVISIBLE);
             viewHolder.btn_operation.setVisibility(View.INVISIBLE);
             viewHolder.iv_tick.setVisibility(View.VISIBLE);
             viewHolder.iv_tick.setImageBitmap(BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.icon_del));
 
-            if(FileUtils.isApkFile(fileInfo.getFilePath()) || FileUtils.isMp4File(fileInfo.getFilePath())){ //Apk格式 或者MP4格式需要 缩略图
+            if (FileUtils.isApkFile(fileInfo.getFilePath()) || FileUtils.isMp4File(fileInfo.getFilePath())) { //Apk格式 或者MP4格式需要 缩略图
                 viewHolder.iv_shortcut.setImageBitmap(fileInfo.getBitmap());
-            }else if(FileUtils.isJpgFile(fileInfo.getFilePath())){//图片格式
+            } else if (FileUtils.isJpgFile(fileInfo.getFilePath())) {//图片格式
+                RequestOptions options = new RequestOptions()
+                        .placeholder(R.mipmap.icon_jpg)
+                        .centerCrop();
                 Glide.with(mContext)
                         .load(fileInfo.getFilePath())
-                        .centerCrop()
-                        .placeholder(R.mipmap.icon_jpg)
-                        .crossFade()
+                        .apply(options)
+                        .transition(withCrossFade())
                         .into(viewHolder.iv_shortcut);
-            }else if(FileUtils.isMp3File(fileInfo.getFilePath())){//音乐格式
+            } else if (FileUtils.isMp3File(fileInfo.getFilePath())) {//音乐格式
                 viewHolder.iv_shortcut.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.icon_mp3));
             }
 
@@ -162,7 +162,7 @@ public class FileInfoSeletedAdapter extends BaseAdapter {
     /**
      * 数据改变监听
      */
-    public interface OnDataListChangedListener{
+    public interface OnDataListChangedListener {
         void onDataChanged();
     }
 }

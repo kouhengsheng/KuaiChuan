@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.github.mayubao.kuaichuan.AppContext;
@@ -46,13 +46,13 @@ public class WebTransferActivity extends BaseActivity {
     /**
      * Topbar相关UI
      */
-    @Bind(R.id.tv_back)
+    @BindView(R.id.tv_back)
     TextView tv_back;
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView tv_title;
-    @Bind(R.id.tv_tip_1)
+    @BindView(R.id.tv_tip_1)
     TextView tv_tip_1;
-    @Bind(R.id.tv_tip_2)
+    @BindView(R.id.tv_tip_2)
     TextView tv_tip_2;
 
     WifiAPBroadcastReceiver mWifiAPBroadcastReceiver;

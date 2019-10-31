@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +22,8 @@ import io.github.mayubao.kuaichuan.Constant;
 import io.github.mayubao.kuaichuan.R;
 import io.github.mayubao.kuaichuan.core.entity.FileInfo;
 import io.github.mayubao.kuaichuan.core.utils.FileUtils;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 /**
  * 文件发送列表 Adapter
@@ -105,11 +108,14 @@ public class FileSenderAdapter extends BaseAdapter {
             if(FileUtils.isApkFile(fileInfo.getFilePath()) || FileUtils.isMp4File(fileInfo.getFilePath())){ //Apk格式 或者MP4格式需要 缩略图
                 viewHolder.iv_shortcut.setImageBitmap(fileInfo.getBitmap());
             }else if(FileUtils.isJpgFile(fileInfo.getFilePath())){//图片格式
+                RequestOptions options = new RequestOptions()
+                        .placeholder(R.mipmap.icon_jpg)
+                        .centerCrop();
+
                 Glide.with(mContext)
                         .load(fileInfo.getFilePath())
-                        .centerCrop()
-                        .placeholder(R.mipmap.icon_jpg)
-                        .crossFade()
+                        .apply(options)
+                        .transition(withCrossFade())
                         .into(viewHolder.iv_shortcut);
             }else if(FileUtils.isMp3File(fileInfo.getFilePath())){//音乐格式
                 viewHolder.iv_shortcut.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.icon_mp3));
